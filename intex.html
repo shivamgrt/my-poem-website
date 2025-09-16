@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Displays</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+        .poem-container {
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .poem-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="py-12 bg-gray-900 shadow-lg text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">My Poetic Journey</h1>
+            <p class="text-lg text-gray-400">A collection of thoughts, feelings, and verses.</p>
+        </div>
+    </header>
+
+    <!-- Gemini API Poem Generator -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-800">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+            <input type="text" id="poem-theme" placeholder="Enter a theme, e.g., 'a walk in the forest'" class="flex-1 p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <button id="generate-poem-btn" class="w-full md:w-auto px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition duration-200">
+                Generate Poem ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content Grid for Poems -->
+    <main class="py-16 px-4 sm:px-6 lg:px-8">
+        <div id="poems-grid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Poem 1: The Quiet Sun -->
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-orange-300">The Quiet Sun</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    A silent orb, a breath of gold,<br>
+                    A story ancient, yet untold.<br>
+                    It dips below the western rim,<br>
+                    And paints the world on evening's hymn.<br>
+                    <br>
+                    The shadows stretch, a gentle hand,<br>
+                    Across the tired, fading land.<br>
+                    And stars, like whispers, start to gleam,<br>
+                    To wake the world from daylight's dream.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+
+            <!-- Poem 2: Echoes of Rain -->
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-cyan-300">Echoes of Rain</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    The sky weeps soft on thirsty leaves,<br>
+                    A tapestry the wind weaves.<br>
+                    Each drop, a note, a gentle beat,<br>
+                    A melody, oh, so sweet.<br>
+                    <br>
+                    It washes clean the city's face,<br>
+                    A moment's calm, a fleeting grace.<br>
+                    And in the puddles, deep and wide,<br>
+                    The world finds secrets it can hide.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+
+            <!-- Poem 3: A Gardener's Hands -->
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-emerald-300">A Gardener's Hands</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    Earth-stained fingers, worn and creased,<br>
+                    A silent pact with sun released.<br>
+                    They touch the soil, so rich and deep,<br>
+                    And secrets of the spring they keep.<br>
+                    <br>
+                    They plant the hope, they tend the bloom,<br>
+                    And banish winter's silent gloom.<br>
+                    In every flower, strong and new,<br>
+                    You see the care, the work, the truth.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Add more poems here -->
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-fuchsia-300">The Clock Tower</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    Tick of the hand, a steady pace,<br>
+                    Marks every moment, time and space.<br>
+                    A bronze-faced sentinel on high,<br>
+                    It watches history pass by.<br>
+                    <br>
+                    Its chimes ring out, a solemn sound,<br>
+                    Above the bustle, on the ground.<br>
+                    A silent guardian, standing tall,<br>
+                    Witness to the rise and fall.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-rose-300">The Old Bookstore</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    The scent of paper, bound and old,<br>
+                    A hundred stories to be told.<br>
+                    Dust motes dance in golden light,<br>
+                    A refuge from the passing night.<br>
+                    <br>
+                    The shelves are filled with whispered lore,<br>
+                    And keys to open every door.<br>
+                    Each spine a promise, waiting there,<br>
+                    A journey for the soul to share.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+
+            <div class="poem-container p-6 rounded-xl relative">
+                <h2 class="text-2xl font-bold mb-4 text-amber-300">City at Dusk</h2>
+                <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                    Streetlights glow, a gentle sigh,<br>
+                    As colors fade from painted sky.<br>
+                    The city hums, a quiet drone,<br>
+                    Where countless lives are lived alone.<br>
+                    <br>
+                    Through canyons of glass and steel,<br>
+                    A thousand hidden stories feel.<br>
+                    The day recedes, the night begins,<br>
+                    And silence waits for what it wins.
+                </blockquote>
+                <div class="flex justify-end mt-4">
+                    <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                        Read Aloud 🔊
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="py-8 bg-gray-900 text-center text-gray-400 text-sm">
+        <p>A collection by &copy; निहाल </p>
+    </footer>
+
+    <!-- JavaScript for Gemini API integrations -->
+    <script>
+        const generateBtn = document.getElementById('generate-poem-btn');
+        const poemThemeInput = document.getElementById('poem-theme');
+        const poemsGrid = document.getElementById('poems-grid');
+        const apiKey = ""; // Keep this line as-is
+
+        // Helper function to handle exponential backoff for API calls
+        async function fetchWithBackoff(url, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response;
+            } catch (error) {
+                if (retries > 0 && (error.message.includes('429') || error.message.includes('50'))) {
+                    await new Promise(res => setTimeout(res, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+        // --- Poem Generation Functionality ---
+        generateBtn.addEventListener('click', async () => {
+            const theme = poemThemeInput.value.trim();
+            if (!theme) {
+                alert('Please enter a theme for the poem.');
+                return;
+            }
+
+            // Show loading state
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const systemPrompt = `You are an acclaimed poet. Write a short, evocative poem of about 8-12 lines on the provided theme. The poem should have a clear rhythm and tone. Do not include a title or any other text, just the poem itself.`;
+                const userQuery = `Theme: ${theme}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    const poemTitle = toTitleCase(theme);
+                    const poemHtml = `
+                        <div class="poem-container p-6 rounded-xl relative">
+                            <h2 class="text-2xl font-bold mb-4 text-purple-300">${poemTitle}</h2>
+                            <blockquote class="poem-text text-gray-300 italic leading-relaxed">
+                                ${text.replace(/\n/g, '<br>')}
+                            </blockquote>
+                            <div class="flex justify-end mt-4">
+                                <button class="read-aloud-btn px-4 py-2 rounded-full bg-slate-600 text-white text-sm hover:bg-slate-700 transition duration-200">
+                                    Read Aloud 🔊
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    poemsGrid.insertAdjacentHTML('afterbegin', poemHtml);
+                } else {
+                    console.error('API response did not contain a poem.');
+                    alert('Could not generate poem. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error generating poem:', error);
+                alert('An error occurred. Please check the console for details.');
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate Poem ✨';
+            }
+        });
+
+        // Helper function for title case
+        function toTitleCase(str) {
+            return str.replace(
+                /\w\S*/g,
+                function(txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                }
+            );
+        }
+
+        // --- Text-to-Speech Functionality ---
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        poemsGrid.addEventListener('click', async (e) => {
+            if (e.target.classList.contains('read-aloud-btn')) {
+                const btn = e.target;
+                const poemContainer = btn.closest('.poem-container');
+                const poemText = poemContainer.querySelector('.poem-text').innerText.trim();
+                
+                if (!poemText) {
+                    console.error("Poem text not found.");
+                    return;
+                }
+
+                // Show loading state
+                btn.disabled = true;
+                btn.textContent = 'Loading...';
+
+                try {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                    const payload = {
+                        contents: [{
+                            parts: [{ text: `Say this poem with an even tone:\n\n${poemText}` }]
+                        }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: {
+                                voiceConfig: {
+                                    prebuiltVoiceConfig: { voiceName: "Achernar" }
+                                }
+                            }
+                        },
+                    };
+
+                    const response = await fetchWithBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    const audioDataPart = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+                    const audioData = audioDataPart?.inlineData?.data;
+                    const mimeType = audioDataPart?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        const audio = new Audio(audioUrl);
+                        
+                        audio.addEventListener('ended', () => {
+                             btn.disabled = false;
+                             btn.textContent = 'Read Aloud 🔊';
+                        });
+                        audio.play();
+
+                    } else {
+                        console.error('API response did not contain audio data.');
+                        alert('Could not read poem aloud. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error generating speech:', error);
+                    alert('An error occurred. Please check the console for details.');
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = 'Read Aloud 🔊';
+                }
+            }
+        });
+
+        // Convert base64 to ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Convert PCM to WAV
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bytesPerSample = 2; // Int16
+            const blockAlign = numChannels * bytesPerSample;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcmData.length * bytesPerSample;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            // Write WAV header
+            let offset = 0;
+            writeString(view, offset, 'RIFF'); offset += 4;
+            view.setUint32(offset, 36 + dataSize, true); offset += 4;
+            writeString(view, offset, 'WAVE'); offset += 4;
+            writeString(view, offset, 'fmt '); offset += 4;
+            view.setUint32(offset, 16, true); offset += 4; // Sub-chunk 1 size
+            view.setUint16(offset, 1, true); offset += 2; // Audio format (1 = PCM)
+            view.setUint16(offset, numChannels, true); offset += 2;
+            view.setUint32(offset, sampleRate, true); offset += 4;
+            view.setUint32(offset, byteRate, true); offset += 4;
+            view.setUint16(offset, blockAlign, true); offset += 2;
+            view.setUint16(offset, bytesPerSample * 8, true); offset += 2; // Bits per sample
+            writeString(view, offset, 'data'); offset += 4;
+            view.setUint32(offset, dataSize, true); offset += 4;
+
+            // Write PCM data
+            for (let i = 0; i < pcmData.length; i++) {
+                view.setInt16(offset, pcmData[i], true);
+                offset += 2;
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        function writeString(view, offset, str) {
+            for (let i = 0; i < str.length; i++) {
+                view.setUint8(offset + i, str.charCodeAt(i));
+            }
+        }
+    </script>
+</body>
+</html>
